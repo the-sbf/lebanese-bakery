@@ -1034,7 +1034,7 @@ textarea { resize: vertical; min-height: 85px; }
         <p style="color:white;"><strong>Join our loyalty programme!</strong><br>Earn stamps, unlock free treats, and get birthday surprises — it's 100% free.</p>
         <a href="https://lebanesebakery.co.za" target="_blank" style="display:inline-block; margin-top:12px; padding:12px 24px; background:var(--red); color:white; border-radius:10px; font-family:'Source Sans 3',sans-serif; font-size:14px; font-weight:700; text-decoration:none; transition:background 0.2s;">Sign up on our website →</a>
       </div>
-      <button class="btn btn-primary" style="margin:28px auto 0; display:block; max-width:200px;" onclick="document.getElementById('kulaModal').classList.add('show'); document.body.style.overflow='hidden';">Finish ✓</button>
+      <button id="finishBtn" class="btn btn-primary" style="margin:28px auto 0; display:block; max-width:200px;" onclick="document.getElementById('kulaModal').classList.add('show'); document.body.style.overflow='hidden';">Finish ✓</button>
     </div>
   </div>
 
@@ -1045,8 +1045,8 @@ textarea { resize: vertical; min-height: 85px; }
       <h3>Enjoyed this experience?</h3>
       <p style="margin-bottom:16px;">This feedback tool was built by <strong style="color:var(--navy);">Kula Learn</strong>. We help businesses and organisations understand their customers better and improve every interaction.</p>
       <p style="font-size:14px; color:var(--text-dark); line-height:1.6;">Want something like this for your business? We'd love to chat.</p>
-      <a href="mailto:leah@kulalearn.com?subject=Enquiry from feedback form&amp;body=Hi Leah,%0A%0AI came across your feedback tool and I'd love to learn more about how Kula Learn can help my business.%0A%0AThanks!" class="modal-btn" style="display:inline-block; margin-top:16px; text-decoration:none;">Get in touch →</a>
-      <button style="display:block; margin:12px auto 0; background:none; border:none; color:var(--text-muted); font-family:'Source Sans 3',sans-serif; font-size:13px; cursor:pointer; text-decoration:underline;" onclick="document.getElementById('kulaModal').classList.remove('show'); document.body.style.overflow='';">Close</button>
+      <a href="mailto:leah@kulalearn.com?subject=Enquiry from feedback form&amp;body=Hi Leah,%0A%0AI came across your feedback tool and I'd love to learn more about how Kula Learn can help my business.%0A%0AThanks!" class="modal-btn" style="display:inline-block; margin-top:16px; text-decoration:none;" onclick="setTimeout(function(){ document.getElementById('kulaModal').classList.remove('show'); document.body.style.overflow=''; var fb=document.getElementById('finishBtn'); fb.textContent='All done ✓'; fb.style.background='#2e7d32'; fb.style.pointerEvents='none'; fb.style.opacity='0.85'; },300);">Get in touch →</a>
+      <button style="display:block; margin:12px auto 0; background:none; border:none; color:var(--text-muted); font-family:'Source Sans 3',sans-serif; font-size:13px; cursor:pointer; text-decoration:underline;" onclick="document.getElementById('kulaModal').classList.remove('show'); document.body.style.overflow=''; var fb=document.getElementById('finishBtn'); fb.textContent='All done ✓'; fb.style.background='#2e7d32'; fb.style.pointerEvents='none'; fb.style.opacity='0.85';">Close</button>
     </div>
   </div>
 
@@ -1245,8 +1245,8 @@ async function submitForm() {
   // ─── SUPABASE INTEGRATION (paused for testing) ───
   // Uncomment the block below and add your credentials when ready to go live.
   /*
-  const SUPABASE_URL = 'https://YOUR_PROJECT_ID.supabase.co';
-  const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+  const SUPABASE_URL = 'https://ciwiuesvpzadmyiiqqur.supabase.co';
+  const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNpd2l1ZXN2cHphZG15aWlxcXVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxODYwMTUsImV4cCI6MjA5NDc2MjAxNX0.XLiVVeH5pfcxFboRfw4BXFtkiMziLsllutKXrUre9Go';
 
   const submitBtn = document.querySelector('.btn-submit');
   const originalText = submitBtn.textContent;
